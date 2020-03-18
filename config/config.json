@@ -2,20 +2,20 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "artBudDB",
+    "database": "exampledb",
     "host": "localhost",
-    "dialect": "mysql2"
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "testdb",
     "host": "localhost",
-    "dialect": "mysql2",
+    "dialect": "mysql",
     "logging": false
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql2"
+    "dialect": "mysql"
   }
 }

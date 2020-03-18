@@ -1,7 +1,10 @@
+/* eslint-disable camelcase */
 require("dotenv").config();
-
 var express = require("express");
 var exphbs = require("express-handlebars");
+var expfile = require("express-fileupload");
+// eslint-disable-next-line no-unused-vars
+var fs = require("fs");
 
 var db = require("./models");
 
@@ -9,6 +12,16 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(expfile({ useTempFiles: true }));
+
+var cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_USER,
+  api_key: process.env.CLOUDINARY_API,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -23,7 +36,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes")(app, cloudinary);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
@@ -35,7 +48,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(() => {
+db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",

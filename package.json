@@ -1,16 +1,6 @@
 {
-  "name": "Project-2",
+  "name": "node-handlebars-boilerplate",
   "version": "1.0.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShawnATX/Project-2.git"
-  },
-  "keywords": [],
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/ShawnATX/Project-2/issues"
-  },
-  "homepage": "https://github.com/ShawnATX/Project-2#readme",
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
@@ -21,11 +11,12 @@
   },
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^6.0.0",
+    "cloudinary": "^1.20.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
+    "express-fileupload": "^1.1.6",
     "express-handlebars": "^3.0.0",
-    "mysql2": "^1.7.0",
-    "lazyload": "^2.0.0-rc.2",
+    "mysql2": "^1.6.4",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {
@@ -36,7 +27,6 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
-    "nodemon": "^2.0.2",
     "prettier": "^1.13.7"
   }
 }
